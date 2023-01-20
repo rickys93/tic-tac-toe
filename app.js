@@ -1,5 +1,6 @@
 const tiles = document.querySelectorAll(".clickable-tile");
 let playerTurn = 1;
+const playerWins = document.getElementsByClassName("player-wins")[0];
 
 function takeTurn(element) {
     if (playerTurn === 1) {
@@ -19,7 +20,27 @@ function takeTurn(element) {
     }
     element.target.removeEventListener("click", takeTurn);
     const board = getBoard();
+    console.log(board);
     const result = startRound(board);
+    console.log(result);
+
+    if (result.finished) {
+        roundFinised(result.winner);
+    }
+}
+
+function roundFinised(winner) {
+    let player;
+    if (winner === "X") {
+        player = "1";
+    } else {
+        player = "2";
+    }
+    playerWins.textContent = `PLAYER ${player} WINS!!`;
+
+    for (tile of tiles) {
+        tile.removeEventListener("click", takeTurn);
+    }
 }
 
 function getBoard() {
@@ -77,8 +98,16 @@ function startRound(board) {
     return { finished: false };
 }
 
-const board = initializeBoard();
+function resetBoard() {
+    for (square of tiles) {
+        square.style.backgroundImage = "";
+        square.id = "";
+    }
+    initializeBoard();
+    playerTurn = 1;
+    playerWins.textContent = "";
+}
 
-const b = ["X", "", "", "X", "", "", "X", "", ""];
-// console.log(board);
-// console.log(startRound(b));
+initializeBoard();
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", resetBoard);
