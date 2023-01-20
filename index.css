@@ -1,21 +1,27 @@
 body {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-60%);
-    transform: translateY(-60%);
-    left: 30%;
+    border: black solid;
+    display: flex;
+    justify-content: center;
 }
+
+.whole-game {
+    width: 650px;
+}
+
 div {
     text-align: center;
 }
+
 h1 {
     font-size: 5em;
     color: blue;
 }
+
 p {
     font-size: 2em;
     color: red;
 }
+
 button {
     background-color: #0071e3;
     border: 0;
