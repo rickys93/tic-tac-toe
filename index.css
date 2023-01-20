@@ -42,7 +42,10 @@ body{
  .clickable-tile{
      border: 1px solid black;
      border-radius: 0.8em;
-     padding: 2em 1em 2em 1em;
+     padding: 2em 0.5em 2em 0.5em;
+     height: 60px;
+     background-repeat: no-repeat;
+     background-position: center;
  }
  .clickable-tile:hover{
      cursor: pointer;
