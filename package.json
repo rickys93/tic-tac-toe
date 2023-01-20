@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickys93/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickys93/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/rickys93/tic-tac-toe#readme",
+  "dependencies": {
+    "jest": "^29.3.1",
+    "jest-each": "^29.3.1"
+  }
+}
