@@ -16,6 +16,10 @@ p {
     font-size: 2em;
     color: red;
 }
+span {
+    margin: 0 0.5em 0 0.5em;
+    color: blue;
+}
 button {
     background-color: #0071e3;
     border: 0;
