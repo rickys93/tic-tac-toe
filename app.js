@@ -20,7 +20,7 @@ function takeTurn(element) {
     }
     element.target.removeEventListener("click", takeTurn);
     const board = getBoard();
-    console.log(board);
+
     const result = startRound(board);
     console.log(result);
 
@@ -33,11 +33,19 @@ function roundFinised(winner) {
     let player;
     if (winner === "X") {
         player = "1";
-    } else {
+    } else if (winner === "O") {
         player = "2";
+    } else {
+        player = "draw";
     }
-    playerWins.textContent = `PLAYER ${player} WINS!!`;
-    const winnerCount = document.getElementById(`p${player}-count`);
+    let winnerCount;
+    if (player === "draw") {
+        playerWins.textContent = `GAME DRAW!!`;
+        winnerCount = document.getElementById("draw-count");
+    } else {
+        playerWins.textContent = `PLAYER ${player} WINS!!`;
+        winnerCount = document.getElementById(`p${player}-count`);
+    }
     winnerCount.textContent++;
 
     for (tile of tiles) {
@@ -75,6 +83,7 @@ function startRound(board) {
     ];
     // go through the list of winning lines
     // if all the indexes of that line in array are Xs or Os, game over
+    let totalMoves = 0;
     for (line of winningLines) {
         let count = {
             X: 0,
@@ -83,21 +92,35 @@ function startRound(board) {
         for (index of line) {
             let element = board[index];
             count[element]++;
-        }
-        let winner;
-        if (count["X"] === 3 || count["O"] === 3) {
-            if (count["X"] === 3) {
-                winner = "X";
-            } else {
-                winner = "O";
+            let winner;
+            if (count["X"] === 3 || count["O"] === 3) {
+                if (count["X"] === 3) {
+                    winner = "X";
+                } else {
+                    winner = "O";
+                }
+                return {
+                    finished: true,
+                    winner: winner,
+                };
             }
-            return {
-                finished: true,
-                winner: winner,
-            };
         }
     }
+    totalMoves = findTotalMoves();
+    if (totalMoves === 9) {
+        return { finished: true, winner: "draw" };
+    }
     return { finished: false };
+}
+
+function findTotalMoves() {
+    let totalMoves = 0;
+    for (tile of tiles) {
+        if (tile.id === "X" || tile.id === "O") {
+            totalMoves++;
+        }
+    }
+    return totalMoves;
 }
 
 function resetBoard() {
