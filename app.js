@@ -1,11 +1,51 @@
-const tiles = document.querySelectorAll(".clickable-tile")
+const tiles = document.querySelectorAll(".clickable-tile");
 
 function initializeBoard() {
-    let board = []
-    for (let i = 0; i < tiles.length; i++) {
-        board[i] = tiles[i]
-    }
-    return board;
+  let board = [];
+  for (let i = 0; i < tiles.length; i++) {
+    board[i] = tiles[i];
+  }
+  return board;
 }
 
-const board = initializeBoard()
+function startRound(board) {
+  const winningLines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2],
+  ];
+  // go through the list of winning lines
+  // if all the indexes of that line in array are Xs or Os, game over
+  for (line of winningLines) {
+    let count = {
+      X: 0,
+      O: 0,
+    };
+    for (index of line) {
+      let element = board[index];
+      count[element]++;
+    }
+    let winner;
+    if (count["X"] === 3 || count["O"] === 3) {
+      if (count["X"] === 3) {
+        winner = "X";
+      } else {
+        winner = "O";
+      }
+      return {
+        finished: true,
+        winner: winner,
+      };
+    }
+    return { finished: false };
+  }
+}
+
+const board = initializeBoard();
+console.log(board);
+// console.log(startRound(board));
