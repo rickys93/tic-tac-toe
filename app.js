@@ -6,7 +6,7 @@ function takeTurn(element) {
     if (playerTurn === 1) {
         element.target.setAttribute(
             "style",
-            "background-image: url('./assets/cross.png')"
+            "background-image: url('./assets/cross.png')",
         );
         element.target.setAttribute("id", "X");
         playerTurn = 2;
