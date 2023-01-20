@@ -3,7 +3,7 @@ body {
     top: 50%;
     -ms-transform: translateY(-60%);
     transform: translateY(-60%);
-    left: 40%;
+    left: 30%;
 }
 div {
     text-align: center;
@@ -15,10 +15,6 @@ h1 {
 p {
     font-size: 2em;
     color: red;
-}
-span {
-    margin: 0 0.5em 0 0.5em;
-    color: blue;
 }
 button {
     background-color: #0071e3;
@@ -40,13 +36,19 @@ button:hover {
     margin: 1em 0 1em 0;
     position: relative;
 }
+
+span {
+    margin: 0 0.5em 0 0.5em;
+    color: blue;
+}
+
 .clickable-tile {
     border: 1px solid black;
-     border-radius: 0.8em;
-     padding: 2em 0.5em 2em 0.5em;
-     height: 60px;
-     background-repeat: no-repeat;
-     background-position: center;
+    border-radius: 0.8em;
+    padding: 2em 0.5em 2em 0.5em;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .clickable-tile:hover {
     cursor: pointer;
