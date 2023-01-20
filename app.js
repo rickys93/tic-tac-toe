@@ -6,7 +6,7 @@ function takeTurn(element) {
     if (playerTurn === 1) {
         element.target.setAttribute(
             "style",
-            "background-image: url('./assets/cross.png')",
+            "background-image: url('./assets/cross.png')"
         );
         element.target.setAttribute("id", "X");
         playerTurn = 2;
@@ -37,6 +37,8 @@ function roundFinised(winner) {
         player = "2";
     }
     playerWins.textContent = `PLAYER ${player} WINS!!`;
+    const winnerCount = document.getElementById(`p${player}-count`);
+    winnerCount.textContent++;
 
     for (tile of tiles) {
         tile.removeEventListener("click", takeTurn);
