@@ -1,4 +1,16 @@
-const tiles = document.querySelectorAll(".clickable-tile");
+const tiles = document.querySelectorAll(".clickable-tile")
+let playerTurn = 1
+
+function takeTurn(element) {
+    if (playerTurn === 1) {
+        element.target.setAttribute("style", "background-image: url('./assets/cross.png')")
+        playerTurn = 2
+    } else {
+        element.target.background = element.target.setAttribute("style", "background-image: url('./assets/nought.png')")
+        playerTurn = 1
+    }
+    element.target.removeEventListener("click", takeTurn)
+}
 
 function initializeBoard() {
   let board = [];
@@ -41,6 +53,7 @@ function startRound(board) {
         finished: true,
         winner: winner,
       };
+        board[i].addEventListener("click", takeTurn)
     }
     return { finished: false };
   }
