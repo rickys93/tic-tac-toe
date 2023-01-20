@@ -16,6 +16,7 @@ function initializeBoard() {
   let board = [];
   for (let i = 0; i < tiles.length; i++) {
     board[i] = tiles[i];
+    board[i].addEventListener("click", takeTurn);
   }
   return board;
 }
@@ -52,8 +53,7 @@ function startRound(board) {
       return {
         finished: true,
         winner: winner,
-      };
-        board[i].addEventListener("click", takeTurn)
+      }
     }
     return { finished: false };
   }
